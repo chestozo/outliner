@@ -1,11 +1,20 @@
 {
-    "name": "Instapaper",
+    "name": "★ Instapaper",
     "version": "0.1",
     "description": "Add page to instapaper.",
 
     "background_page": "bg.html", 
+
     "browser_action": {
         "default_icon": "favicon.png"
     },
-    "permissions": [ "tabs", "http://*/*", "https://*/*" ]
+
+    "content_scripts": [
+        {
+            "matches": [ "*://*/*" ],
+            "js": [ "jquery.1-7-1.min.js" ]
+        }
+    ],
+
+    "permissions": [ "tabs", "*://*/*" ]
 }
