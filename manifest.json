@@ -1,20 +1,14 @@
 {
-    "name": "★ Instapaper",
+    "manifest_version": 2,
+    "name": "Chrome plugins opener",
     "version": "0.1",
-    "description": "Add page to instapaper.",
+    "description": "",
 
     "background_page": "bg.html", 
 
     "browser_action": {
         "default_icon": "favicon.png"
     },
-
-    "content_scripts": [
-        {
-            "matches": [ "*://*/*" ],
-            "js": [ "jquery.1-7-1.min.js" ]
-        }
-    ],
 
     "permissions": [ "tabs", "*://*/*" ]
 }
