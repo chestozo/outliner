@@ -1,10 +1,16 @@
 {
     "manifest_version": 2,
+
     "name": "Chrome plugins opener",
     "version": "0.1",
     "description": "",
 
-    "background_page": "bg.html", 
+    "background": {
+        "scripts": [
+            "jquery.min.js",
+            "bg.js"
+        ]
+    },
 
     "browser_action": {
         "default_icon": "favicon.png"
