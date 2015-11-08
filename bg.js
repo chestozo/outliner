@@ -12,7 +12,7 @@ chrome.contextMenus.create({
         chrome.tabs.executeScript(
             tab.id,
             {
-                code: "([]).forEach.call(document.querySelectorAll('*'), function(el) { el.style['box-shadow'] = 'inset 0 0 1px red'; })"
+                code: ";(function() { var s = document.createElement('style'); s.innerText = '* { box-shadow: inset 0 0 1px red; }'; document.head.appendChild(s); })();"
             }
         );
     }
