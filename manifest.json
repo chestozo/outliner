@@ -24,5 +24,15 @@
         "*://*/*",
         "tabs",
         "contextMenus"
-    ]
+    ],
+
+    "commands": {
+        "toggle-elements-outline": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L",
+                "mac": "Command+Shift+L"
+            },
+            "description": "Toggle elements outline"
+        }
+    }
 }
