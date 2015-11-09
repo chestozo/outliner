@@ -29,8 +29,8 @@
     "commands": {
         "toggle-elements-outline": {
             "suggested_key": {
-                "default": "Ctrl+Shift+L",
-                "mac": "Command+Shift+L"
+                "default": "Ctrl+Shift+O",
+                "mac": "Command+Shift+O"
             },
             "description": "Toggle elements outline"
         }
