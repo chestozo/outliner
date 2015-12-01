@@ -9,7 +9,7 @@ var initExtension = function() {
         "} else {" +
         "    s = document.createElement('style');" +
         "    s.id = '__ext_plugs_outline_style__';" +
-        "    s.innerText = '* { box-shadow: inset 0 0 1px red; }';" +
+        "    s.innerText = '* { box-shadow: inset 0 0 1px red; } iframe { box-shadow: 0 0 1px red; }';" +
         "    document.head.appendChild(s);" +
         "}" +
         "})();";
