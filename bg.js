@@ -16,9 +16,6 @@ var initExtension = function() {
 
     // Toggle outline elements on the page.
     var toggleOutline = function(tabId) {
-        // FIXME now done by keys extension
-        return;
-
         chrome.tabs.executeScript(
             tabId,
             { code: outlineCode }
