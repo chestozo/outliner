@@ -1,7 +1,7 @@
 ;(function() {
 
 var initExtension = function() {
-    var outlineCode =
+    var outlineForever =
         ";(function() {" +
         "var s = document.querySelector('#__ext_plugs_outline_style__');" +
         "if (s) {" +
@@ -14,11 +14,17 @@ var initExtension = function() {
         "}" +
         "})();";
 
+    var outlineOnce = "document.querySelectorAll('*').forEach(function(node) { " +
+        "var style = node.getAttribute('style');" +
+        "node.setAttribute('style', (style || '') + ';box-shadow: inset 0 0 1px red;');" +
+    "});";
+
     // Toggle outline elements on the page.
     var toggleOutline = function(tabId) {
         chrome.tabs.executeScript(
             tabId,
-            { code: outlineCode }
+            // { code: outlineForever }
+            { code: outlineOnce }
         );
     };
 
