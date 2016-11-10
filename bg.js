@@ -60,6 +60,6 @@ var initExtension = function() {
     });
 };
 
-$(initExtension);
+initExtension();
 
 }());
