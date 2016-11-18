@@ -26,10 +26,17 @@
     ],
 
     "commands": {
-        "toggle-elements-outline": {
+        "toggle-elements-outline-once": {
             "suggested_key": {
                 "default": "Ctrl+Shift+O",
                 "mac": "Command+Shift+O"
+            },
+            "description": "Toggle elements outline once"
+        },
+        "toggle-elements-outline": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+P",
+                "mac": "Command+Shift+P"
             },
             "description": "Toggle elements outline"
         }

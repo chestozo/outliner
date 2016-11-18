@@ -20,17 +20,32 @@ var initExtension = function() {
     "});";
 
     // Toggle outline elements on the page.
+    var toggleOutlineOnce = function(tabId) {
+        chrome.tabs.executeScript(
+            tabId,
+            { code: outlineOnce }
+        );
+    };
+
     var toggleOutline = function(tabId) {
         chrome.tabs.executeScript(
             tabId,
-            // { code: outlineForever }
-            { code: outlineOnce }
+            { code: outlineForever }
         );
     };
 
     // Create context menu item.
     chrome.contextMenus.create({
-        title: 'Dev: Outline elements toggle', //  [Cmd + Shift + 0]
+        title: 'Dev: Outline elements toggle once', //  [Cmd + Shift + 0]
+        type: 'normal',
+        contexts: [ 'all' ],
+        onclick: function(info, tab) {
+            toggleOutlineOnce(tab.id);
+        }
+    });
+
+    chrome.contextMenus.create({
+        title: 'Dev: Outline elements toggle', //  [Cmd + Shift + P]
         type: 'normal',
         contexts: [ 'all' ],
         onclick: function(info, tab) {
@@ -48,14 +63,14 @@ var initExtension = function() {
 
     // Shortcuts support.
     chrome.commands.onCommand.addListener(function(command) {
-        debugger;
-
-        if (command === 'toggle-elements-outline') {
-
+        if (command === 'toggle-elements-outline-once') {
+            chrome.tabs.getSelected(null, function(tab){
+                toggleOutlineOnce(tab.id);
+            });
+        } else if (command === 'toggle-elements-outline') {
             chrome.tabs.getSelected(null, function(tab){
                 toggleOutline(tab.id);
             });
-
         }
     });
 };
