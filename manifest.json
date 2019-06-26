@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
 
-    "name": "Chrome plugins opener",
+    "name": "Outliner",
     "version": "0.1",
-    "description": "",
+    "description": "Outline elements on the page",
 
     "background": {
         "scripts": [
@@ -11,13 +11,7 @@
         ]
     },
 
-    "icons": {
-        "16": "favicon.16.png"
-    },
-
-    "browser_action": {
-        "default_icon": "favicon.19.png"
-    },
+    "browser_action": {},
 
     "permissions": [
         "*://*/*",
@@ -31,14 +25,14 @@
                 "default": "Ctrl+Shift+O",
                 "mac": "Command+Shift+O"
             },
-            "description": "Toggle elements outline once"
+            "description": "Toggle elements outline (turn elements outline on and off)"
         },
         "toggle-elements-outline": {
             "suggested_key": {
                 "default": "Ctrl+Shift+P",
                 "mac": "Command+Shift+P"
             },
-            "description": "Toggle elements outline"
+            "description": "Permanent elements outline (permanent outline so you can see what elements are replaced when interacting with the webpage)"
         }
     }
 }

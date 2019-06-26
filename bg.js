@@ -1,7 +1,7 @@
 ;(function() {
 
 var initExtension = function() {
-    var outlineForever =
+    var outlineToggleCode =
         ";(function() {" +
         "var s = document.querySelector('#__ext_plugs_outline_style__');" +
         "if (s) {" +
@@ -14,62 +14,54 @@ var initExtension = function() {
         "}" +
         "})();";
 
-    var outlineOnce = "document.querySelectorAll('*').forEach(function(node) { " +
+    var outlineForeverCode = "document.querySelectorAll('*').forEach(function(node) { " +
         "var style = node.getAttribute('style');" +
         "node.setAttribute('style', (style || '') + ';box-shadow: inset 0 0 1px red;');" +
     "});";
 
     // Toggle outline elements on the page.
-    var toggleOutlineOnce = function(tabId) {
+    var outlineToggle = function(tabId) {
         chrome.tabs.executeScript(
             tabId,
-            { code: outlineOnce }
+            { code: outlineToggleCode }
         );
     };
 
-    var toggleOutline = function(tabId) {
+    var outlineForever = function(tabId) {
         chrome.tabs.executeScript(
             tabId,
-            { code: outlineForever }
+            { code: outlineForeverCode }
         );
     };
 
     // Create context menu item.
     chrome.contextMenus.create({
-        title: 'Dev: Outline elements toggle once', //  [Cmd + Shift + 0]
+        title: 'Toggle elements outline (turn elements outline on and off',
         type: 'normal',
         contexts: [ 'all' ],
         onclick: function(info, tab) {
-            toggleOutlineOnce(tab.id);
+            outlineToggle(tab.id);
         }
     });
 
     chrome.contextMenus.create({
-        title: 'Dev: Outline elements toggle', //  [Cmd + Shift + P]
+        title: 'Permanent elements outline (permanent outline so you can see what elements are replaced when interacting with the webpage',
         type: 'normal',
         contexts: [ 'all' ],
         onclick: function(info, tab) {
-            toggleOutline(tab.id);
+            outlineForever(tab.id);
         }
-    });
-
-    // Extension button click - opens plugins panel.
-    chrome.browserAction.onClicked.addListener(function(tab) {
-        chrome.tabs.create({
-            url: 'chrome://plugins',
-            active: true
-        });
     });
 
     // Shortcuts support.
     chrome.commands.onCommand.addListener(function(command) {
         if (command === 'toggle-elements-outline-once') {
             chrome.tabs.getSelected(null, function(tab){
-                toggleOutlineOnce(tab.id);
+                outlineToggle(tab.id);
             });
         } else if (command === 'toggle-elements-outline') {
             chrome.tabs.getSelected(null, function(tab){
-                toggleOutline(tab.id);
+                outlineForever(tab.id);
             });
         }
     });
